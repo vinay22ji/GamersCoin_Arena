@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "269089106666",
+    "firebase_url": "https://gamerscoin-areana-default-rtdb.firebaseio.com",
+    "project_id": "gamerscoin-areana",
+    "storage_bucket": "gamerscoin-areana.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:269089106666:android:f9e8bb49a85d4fbd69c593",
+        "android_client_info": {
+          "package_name": "com.developer.vinay22ji.gamerscoin_arena"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "269089106666-srvi28k3g0di8j76q2hviogduulofju9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.developer.vinay22ji.gamerscoin_arena",
+            "certificate_hash": "e20c4ca459d5b089da35f118fadd9407f933ab04"
+          }
+        },
+        {
+          "client_id": "269089106666-mq688nq0ns92sechrguvgafmlkfrkepv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApPGOWiiiSoSzc11IHwUas67vyMQWX7w4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "269089106666-mq688nq0ns92sechrguvgafmlkfrkepv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,2 @@
+include ':app'
+rootProject.name = "GamersCoin_Arena"

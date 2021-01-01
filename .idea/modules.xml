@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/GamersCoin_Arena.iml" filepath="$PROJECT_DIR$/.idea/modules/GamersCoin_Arena.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/GamersCoin_Arena.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/GamersCoin_Arena.app.iml" />
+    </modules>
+  </component>
+</project>
