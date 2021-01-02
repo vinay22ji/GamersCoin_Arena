@@ -210,6 +210,7 @@ public class Login_Activity extends AppCompatActivity {
                                             user.put("email", "");
                                             user.put("number", "+91 "+mobileNum);
                                             user.put("wallet", 0);
+                                            user.put("verified", false);
                                             user.put("status","active");
 //                                            user.put("joinDate", FieldValue.serverTimestamp());
                                             user.put("userId", FirebaseAuth.getInstance().getCurrentUser().getUid());

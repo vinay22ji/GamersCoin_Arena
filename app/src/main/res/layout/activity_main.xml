@@ -6,96 +6,47 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <LinearLayout
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/activity_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
 
-        <LinearLayout
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewPager"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_marginBottom="56dp" />
 
-            <RelativeLayout
-                android:id="@+id/relativeLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:layout_margin="5dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+        <eu.long1.spacetablayout.SpaceTabLayout
+            android:id="@+id/spaceTabLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_behavior="eu.long1.spacetablayout.SpaceTabLayoutBehavior"
+            app:number_of_tabs="three"
+            app:starting_position="two"
+            app:icon_one="@drawable/task_24"
+            app:icon_two="@drawable/home_24"
+            app:icon_three="@drawable/profile_24"
+            app:text_one=""
+            app:text_two=""
+            app:text_three=""
+            app:tab_color="@color/darkWhite"/>
 
-                <TextView
-                    android:id="@+id/text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="15dp"
-                    android:maxLines="2"
-                    android:text="Hello Vinay!"
-                    android:textColor="@color/textcolour"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/profileCircleImageView"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="10dp"
-                    android:src="@drawable/pper"
-                    app:civ_border_color="@color/colorAccent"
-                    app:civ_border_width="2dp" />
-
-                <ImageView
-                    android:id="@+id/searchimage"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="10dp"
-                    android:layout_toLeftOf="@id/profileCircleImageView"
-                    android:src="@drawable/ic_search" />
-            </RelativeLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            tools:layout_editor_absoluteY="50dp">
-
-            <TextView
-                android:id="@+id/grouptext"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="22dp"
-                android:layout_marginTop="10dp"
-                android:text="Groups"
-                android:textColor="@color/textcolour"
-                android:textSize="17dp" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/myRecycleView"
-                android:layout_width="match_parent"
-                android:layout_marginTop="10dp"
-                android:layout_height="100dp">
-
-
-            </androidx.recyclerview.widget.RecyclerView>
-
-
-        </LinearLayout>
-
-    </LinearLayout>
-
+</LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
