@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
@@ -23,6 +24,10 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -186,87 +191,56 @@ public class Login_Activity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<InstanceIdResult> task) {
                             if(task.isSuccessful())
                             {
-                                FirebaseFirestore.getInstance().collection("users")
-                                        .whereEqualTo("number","+91 "+Number_Edittext.getText().toString())
-                                        .addSnapshotListener(new EventListener<QuerySnapshot>() {
-                                            @Override
-                                            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
 
-                                                if(value.isEmpty())
-                                                {
-                                                    final String mobileNum = Number_Edittext.getText().toString();
+                                FirebaseDatabase.getInstance().getReference().child("users")
+                                        .child(FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
 
+                                        if(snapshot.exists())
+                                        {
+                                            Toast.makeText(Login_Activity.this, "Welcome Back!", Toast.LENGTH_SHORT).show();
+                                            startActivity(new Intent(Login_Activity.this,MainActivity.class));
+                                        }
+                                        else
+                                        {
+                                            final String mobileNum = Number_Edittext.getText().toString();
+                                            final Map<String, Object> user = new HashMap<>();
+                                            user.put("name", "");
+                                            user.put("email", "");
+                                            user.put("number", "+91 "+mobileNum);
+                                            user.put("wallet", 0);
+                                            user.put("status","active");
+//                                            user.put("joinDate", FieldValue.serverTimestamp());
+                                            user.put("userId", FirebaseAuth.getInstance().getCurrentUser().getUid());
 
-                                                    final Map<String, Object> user = new HashMap<>();
-                                                    user.put("name", "");
-                                                    user.put("email", "");
-                                                    user.put("number", "+91 "+mobileNum);
-                                                    user.put("wallet", 0);
-                                                    user.put("status","active");
-                                                    user.put("joinDate", FieldValue.serverTimestamp());
-                                                    user.put("userId", FirebaseAuth.getInstance().getCurrentUser().getUid());
+                                            FirebaseDatabase.getInstance().getReference().child("users").child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                                    .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
 
-                                                    notreg=true;
-                                                    FirebaseFirestore.getInstance().collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                                            .set(user)
-                                                            .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                                @Override
-                                                                public void onSuccess(Void aVoid) {
-
-                                                                    HashMap<String,String>tokens=new HashMap<>();
-                                                                    tokens.put("token", String.valueOf(token));
-
-                                                                    FirebaseFirestore.getInstance().collection("tokens")
-                                                                            .document(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                                                            .set(tokens).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                                        @Override
-                                                                        public void onSuccess(Void aVoid) {
-                                                                            Toast.makeText(Login_Activity.this, "Register success", Toast.LENGTH_SHORT).show();
-                                                                            dialog.dismiss();
-                                                                        }
-                                                                    })
-                                                                            .addOnFailureListener(new OnFailureListener() {
-                                                                                @Override
-                                                                                public void onFailure(@NonNull Exception e) {
-                                                                                    dialog.dismiss();
-                                                                                    Toast.makeText(Login_Activity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-
-                                                                                }
-                                                                            });
-
-                                                                }
-                                                            }).addOnFailureListener(new OnFailureListener() {
-                                                        @Override
-                                                        public void onFailure(@NonNull Exception e) {
-                                                            dialog.dismiss();
-                                                            Toast.makeText(Login_Activity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-
-                                                        }
-                                                    });
-                                                }
-                                                else
-                                                {
-                                                    if(!notreg)
+                                                    if(task.isSuccessful())
                                                     {
-                                                        try {
-                                                            dialog.dismiss();
-                                                            Toast.makeText(Login_Activity.this, "Welcome Again", Toast.LENGTH_SHORT).show();
-
-                                                        }
-                                                        catch (Exception n)
-                                                        {
-
-                                                        }
-                                                        dialog.dismiss();
+                                                        Toast.makeText(Login_Activity.this, "Account Created", Toast.LENGTH_SHORT).show();
+                                                        startActivity(new Intent(Login_Activity.this,MainActivity.class));
+                                                    }
+                                                    else
+                                                    {
+                                                        Toast.makeText(Login_Activity.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
                                                     }
 
-
-
                                                 }
+                                            });
 
-                                            }
-                                        });
+                                        }
 
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                    }
+                                });
 
                             }
                             else

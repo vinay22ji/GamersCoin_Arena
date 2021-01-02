@@ -14,6 +14,11 @@ public class Splace_Screen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splace__screen);
+        if(new DarkModePrefManager(Splace_Screen.this).isNightMode()){
+            MainActivity.darkmode(Splace_Screen.this);
+        }else {
+
+        }
         MainActivity.setupMode(this.getWindow(), Splace_Screen.this);
         if(FirebaseAuth.getInstance().getCurrentUser()==null)
         {

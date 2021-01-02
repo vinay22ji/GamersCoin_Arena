@@ -20,6 +20,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        if(new DarkModePrefManager(MainActivity.this).isNightMode()){
+            MainActivity.darkmode(MainActivity.this);
+        }
+
         MainActivity.setupMode(this.getWindow(), MainActivity.this);
 
 
@@ -33,28 +37,27 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
     public static void setupMode(Window window , Context context){
         if(new DarkModePrefManager(context).isNightMode()){
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-//            changeStatusBar(MODE_DARK,window,context);
+            changeStatusBar(MODE_LIGHT,window,context);
             isdarkmode=true;
         }else{
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-//            changeStatusBar(MODE_LIGHT,window,context);
+            changeStatusBar(MODE_DARK,window,context);
             isdarkmode=false;
         }
     }
 
-//    public static void changeStatusBar(int mode, Window window,Context context){
-//        if(Build.VERSION.SDK_INT>= Build.VERSION_CODES.M){
-//            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-//            window.setStatusBarColor(context.getResources().getColor(R.color.contentStatusBar));
-//            //Light mode
-//            if(mode==MODE_LIGHT){
-//                window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-//            }
-//        }
-//    }
+    public static void changeStatusBar(int mode, Window window,Context context){
+        if(Build.VERSION.SDK_INT>= Build.VERSION_CODES.M){
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(context.getResources().getColor(R.color.contentStatusBar));
+            //Light mode
+            if(mode==MODE_LIGHT){
+                window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+            }
+        }
+    }
 
 }
