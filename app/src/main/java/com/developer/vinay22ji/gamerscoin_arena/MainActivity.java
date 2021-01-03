@@ -1,14 +1,23 @@
 package com.developer.vinay22ji.gamerscoin_arena;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.widget.Toolbar;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -17,6 +26,8 @@ import android.widget.TextView;
 import com.developer.vinay22ji.gamerscoin_arena.Fragments.Fragment_Home;
 import com.developer.vinay22ji.gamerscoin_arena.Fragments.Fragment_Profile;
 import com.developer.vinay22ji.gamerscoin_arena.Fragments.Fragment_Task;
+import com.gauravk.bubblenavigation.BubbleNavigationConstraintView;
+import com.gauravk.bubblenavigation.listener.BubbleNavigationChangeListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -33,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
     public static final int MODE_DARK = 0;
     public static final int MODE_LIGHT = 1;
     public static boolean  isdarkmode;
-    SpaceTabLayout tabLayout;
+    SpaceTabLayout SpaceTabLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,34 +54,35 @@ public class MainActivity extends AppCompatActivity {
             MainActivity.darkmode(MainActivity.this);
         }
         MainActivity.setupMode(this.getWindow(), MainActivity.this);
+        setView(savedInstanceState);
 
-        setupTabs(savedInstanceState);
 
     }
 
     //we need the outState to save the position
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-        tabLayout.saveState(outState);
+        SpaceTabLayout.saveState(outState);
         super.onSaveInstanceState(outState);
     }
 
-    public  void setupTabs(Bundle savedInstanceState)
+    public void setView(Bundle savedInstanceState)
     {
+        //add the fragments you want to display in a List
         List<Fragment> fragmentList = new ArrayList<>();
         fragmentList.add(new Fragment_Task());
         fragmentList.add(new Fragment_Home());
         fragmentList.add(new Fragment_Profile());
 
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
-        tabLayout = (SpaceTabLayout) findViewById(R.id.spaceTabLayout);
+        SpaceTabLayout = (SpaceTabLayout) findViewById(R.id.spaceTabLayout);
 
         //we need the savedInstanceState to get the position
-        tabLayout.initialize(viewPager, getSupportFragmentManager(),
+        SpaceTabLayout.initialize(viewPager, getSupportFragmentManager(),
                 fragmentList, savedInstanceState);
-
     }
 
+    
     public static void darkmode(Context context) {
         DarkModePrefManager darkModePrefManager = new DarkModePrefManager(context);
         darkModePrefManager.setDarkMode(!darkModePrefManager.isNightMode());

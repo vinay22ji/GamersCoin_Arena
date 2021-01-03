@@ -13,4 +13,13 @@
         <item name="android:statusBarColor" tools:targetApi="l">@color/darkWhite</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="ActionBar" parent="Theme.AppCompat">
+        <item name="android:background">@color/white</item>
+        <item name="android:titleTextStyle">@style/ActionBar.TitleTextStyle</item>
+    </style>
+    <style name="ActionBar.TitleTextStyle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/textcolour</item>
+    </style>
+
 </resources>

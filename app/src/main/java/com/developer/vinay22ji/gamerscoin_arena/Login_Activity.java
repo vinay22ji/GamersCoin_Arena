@@ -3,6 +3,7 @@ package com.developer.vinay22ji.gamerscoin_arena;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -45,7 +46,7 @@ import static java.security.AccessController.getContext;
 
 public class Login_Activity extends AppCompatActivity {
 
-    Button Get_otp_btn,Register_btn;
+    AppCompatButton Get_otp_btn,Register_btn;
     EditText Number_Edittext,Otp_Edittext;
     TextView ShowNumber_text,changeNumber_text;
 

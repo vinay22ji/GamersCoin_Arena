@@ -48,10 +48,12 @@
                 android:maxLength="10"
                 android:layout_marginBottom="10dp"/>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/Get_otp_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/round_button"
+                android:textColor="@color/white"
                 android:text="Get Otp"/>
 
         </LinearLayout>
@@ -89,10 +91,12 @@
                 android:maxLength="6"
                 android:layout_marginBottom="10dp"/>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/Register_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/round_button"
+                android:textColor="@color/white"
                 android:text="Login"/>
 
             <TextView

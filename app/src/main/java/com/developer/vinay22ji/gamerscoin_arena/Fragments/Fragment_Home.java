@@ -18,32 +18,40 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.robinhood.ticker.TickerUtils;
+import com.robinhood.ticker.TickerView;
 
 public class Fragment_Home extends Fragment {
 
     String Uid;
     TextView name_text;
-
+    TickerView currentPoint;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View  view= inflater.inflate(R.layout.fragment__home, container, false);
 
-        if(new DarkModePrefManager(getActivity()).isNightMode()){
-            MainActivity.darkmode(getActivity());
-        }MainActivity.setupMode(getActivity().getWindow(), getActivity());
-
         init(view);
         getdatafrom_Firebase();
+
 
         return view;
     }
 
+
     public void init(View view)
     {
+
+        if(new DarkModePrefManager(getActivity()).isNightMode()){
+            MainActivity.darkmode(getActivity());
+        }MainActivity.setupMode(getActivity().getWindow(), getActivity());
+
+
         Uid= FirebaseAuth.getInstance().getCurrentUser().getUid();
         name_text=view.findViewById(R.id.name_text);
+        currentPoint = (TickerView) view.findViewById(R.id.userpointss);
+        currentPoint.setCharacterLists(TickerUtils.provideNumberList());
     }
 
     public void getdatafrom_Firebase()
@@ -54,7 +62,7 @@ public class Fragment_Home extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                name_text.setText("Hello "+snapshot.child("name").getValue().toString()+"!");
+//                name_text.setText("Hello "+snapshot.child("name").getValue().toString()+"!");
 
             }
 
@@ -65,4 +73,6 @@ public class Fragment_Home extends Fragment {
         });
 
     }
+
+
 }
