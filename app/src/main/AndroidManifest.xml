@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GamersCoin_Arena">
         <activity android:name=".Login_Activity"/>
-        <activity android:name=".WebActivity"/>
+        <activity android:name=".Activities.WebActivity"/>
         <activity android:name=".MainActivity" />
         <activity android:name=".Splace_Screen">
             <intent-filter>

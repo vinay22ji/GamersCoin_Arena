@@ -20,6 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.developer.vinay22ji.gamerscoin_arena.Activities.WebActivity;
 import com.developer.vinay22ji.gamerscoin_arena.DarkModePrefManager;
 import com.developer.vinay22ji.gamerscoin_arena.MainActivity;
 import com.developer.vinay22ji.gamerscoin_arena.Models.GameModel;
@@ -147,6 +148,17 @@ public class Fragment_Home extends Fragment {
                 holder.name.setText(model.getName());
                 Picasso.get().load(model.getIcon()).into(holder.icon);
 
+                holder.card.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        WebActivity webActivity=new WebActivity(model.getLink());
+                        webActivity.webUrl=model.getLink();
+                        startActivity(new Intent(getActivity(), WebActivity.class));
+
+                    }
+                });
+
             }
 
             @NonNull
@@ -159,7 +171,6 @@ public class Fragment_Home extends Fragment {
 
         onlinegames_recyclerview.setAdapter(adapter);
     }
-
 
     @Override
     public void onStart() {
