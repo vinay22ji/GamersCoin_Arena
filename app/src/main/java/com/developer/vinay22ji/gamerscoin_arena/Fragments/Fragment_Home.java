@@ -38,6 +38,7 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.robinhood.ticker.TickerUtils;
 import com.robinhood.ticker.TickerView;
+import com.squareup.picasso.Picasso;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -144,6 +145,8 @@ public class Fragment_Home extends Fragment {
             protected void onBindViewHolder(@NonNull GameModelViewHolder holder, final int position, @NonNull final GameModel model)
             {
                 holder.name.setText(model.getName());
+                Picasso.get().load(model.getIcon()).into(holder.icon);
+
             }
 
             @NonNull

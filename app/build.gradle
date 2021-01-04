@@ -59,6 +59,6 @@ dependencies {
     implementation 'eu.long1:spacetablayout:1.0.4'
     implementation 'com.gauravk.bubblenavigation:bubblenavigation:1.0.7'
     implementation 'com.robinhood.ticker:ticker:2.0.2'
-
+    implementation 'com.squareup.picasso:picasso:2.71828'
 
 }
