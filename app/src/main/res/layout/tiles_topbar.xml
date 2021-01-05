@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:weightSum="3">
+
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Time : 15"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/tv_score"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SCORE : "
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/tv_best"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="BEST : 0"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textStyle="bold"/>
+
+
+</LinearLayout>

@@ -9,10 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GamersCoin_Arena">
-        <activity android:name=".Login_Activity"/>
-        <activity android:name=".Activities.WebActivity"/>
+        <activity android:name=".Splace_Screen"/>
+        <activity android:name=".Login_Activity" />
+        <activity android:name=".Activities.WebActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".Splace_Screen">
+        <activity android:name=".PianoTiles_Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
