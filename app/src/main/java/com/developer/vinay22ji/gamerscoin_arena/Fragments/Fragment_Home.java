@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,6 +25,7 @@ import com.developer.vinay22ji.gamerscoin_arena.Activities.WebActivity;
 import com.developer.vinay22ji.gamerscoin_arena.DarkModePrefManager;
 import com.developer.vinay22ji.gamerscoin_arena.MainActivity;
 import com.developer.vinay22ji.gamerscoin_arena.Models.GameModel;
+import com.developer.vinay22ji.gamerscoin_arena.PianoTiles_Activity;
 import com.developer.vinay22ji.gamerscoin_arena.R;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
@@ -52,6 +54,8 @@ public class Fragment_Home extends Fragment {
     TextView name_text;
     TickerView currentPoint;
     RecyclerView onlinegames_recyclerview;
+    CardView Piano_Tiles_Card;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -79,8 +83,16 @@ public class Fragment_Home extends Fragment {
         currentPoint = (TickerView) view.findViewById(R.id.userpointss);
         currentPoint.setCharacterLists(TickerUtils.provideNumberList());
         onlinegames_recyclerview = view.findViewById(R.id.onlinegames_recyclerview);
+        Piano_Tiles_Card = view.findViewById(R.id.Piano_Tiles_Card);
 
+        Piano_Tiles_Card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                startActivity(new Intent(getActivity(), PianoTiles_Activity.class));
+
+            }
+        });
 
         get_OnlineGames();
     }

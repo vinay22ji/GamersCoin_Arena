@@ -181,6 +181,9 @@ public class PianoTiles_Activity extends AppCompatActivity {
         b_play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+
                 initGame();
 
             }
@@ -218,6 +221,22 @@ public class PianoTiles_Activity extends AppCompatActivity {
 
     private void initGame()
     {
+        iv_11.setImageResource(emptyImage);
+        iv_12.setImageResource(emptyImage);
+        iv_13.setImageResource(emptyImage);
+        iv_21.setImageResource(emptyImage);
+        iv_22.setImageResource(emptyImage);
+        iv_23.setImageResource(emptyImage);
+        iv_31.setImageResource(emptyImage);
+        iv_32.setImageResource(emptyImage);
+        iv_33.setImageResource(emptyImage);
+        iv_41.setImageResource(emptyImage);
+        iv_42.setImageResource(emptyImage);
+        iv_43.setImageResource(emptyImage);
+        iv_51.setImageResource(emptyImage);
+        iv_52.setImageResource(emptyImage);
+        iv_53.setImageResource(emptyImage);
+
         iv_31.setEnabled(true);
         iv_32.setEnabled(true);
         iv_33.setEnabled(true);
@@ -258,25 +277,25 @@ public class PianoTiles_Activity extends AppCompatActivity {
 
         b_play.setVisibility(View.VISIBLE);
 
-        iv_11.setImageResource(emptyImage);
-        iv_12.setImageResource(emptyImage);
-        iv_13.setImageResource(emptyImage);
-
-        iv_21.setImageResource(emptyImage);
-        iv_22.setImageResource(emptyImage);
-        iv_23.setImageResource(emptyImage);
-
-        iv_31.setImageResource(emptyImage);
-        iv_32.setImageResource(emptyImage);
-        iv_33.setImageResource(emptyImage);
-
-        iv_41.setImageResource(emptyImage);
-        iv_42.setImageResource(emptyImage);
-        iv_43.setImageResource(emptyImage);
-
-        iv_51.setImageResource(emptyImage);
-        iv_52.setImageResource(emptyImage);
-        iv_53.setImageResource(emptyImage);
+//        iv_11.setImageResource(emptyImage);
+//        iv_12.setImageResource(emptyImage);
+//        iv_13.setImageResource(emptyImage);
+//
+//        iv_21.setImageResource(emptyImage);
+//        iv_22.setImageResource(emptyImage);
+//        iv_23.setImageResource(emptyImage);
+//
+//        iv_31.setImageResource(emptyImage);
+//        iv_32.setImageResource(emptyImage);
+//        iv_33.setImageResource(emptyImage);
+//
+//        iv_41.setImageResource(emptyImage);
+//        iv_42.setImageResource(emptyImage);
+//        iv_43.setImageResource(emptyImage);
+//
+//        iv_51.setImageResource(emptyImage);
+//        iv_52.setImageResource(emptyImage);
+//        iv_53.setImageResource(emptyImage);
 
         if(currentScore>bestScore)
         {
