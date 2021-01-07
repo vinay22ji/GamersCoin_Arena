@@ -65,7 +65,6 @@ public class Fragment_Home extends Fragment {
         init(view);
         getdatafrom_Firebase();
 
-
         return view;
     }
 

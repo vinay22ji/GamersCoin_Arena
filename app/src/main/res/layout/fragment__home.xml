@@ -172,8 +172,8 @@
 
                             <ImageView
                                 android:src="@drawable/pianotiles_image"
-                                android:layout_width="100dp"
-                                android:layout_height="match_parent"/>
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"/>
 
                         </LinearLayout>
 
