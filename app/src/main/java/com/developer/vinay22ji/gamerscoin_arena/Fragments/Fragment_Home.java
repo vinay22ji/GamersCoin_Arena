@@ -28,6 +28,7 @@ import com.developer.vinay22ji.gamerscoin_arena.DarkModePrefManager;
 import com.developer.vinay22ji.gamerscoin_arena.MainActivity;
 import com.developer.vinay22ji.gamerscoin_arena.Models.GameModel;
 import com.developer.vinay22ji.gamerscoin_arena.Models.SliderModel;
+import com.developer.vinay22ji.gamerscoin_arena.OnlineGames_Activity;
 import com.developer.vinay22ji.gamerscoin_arena.PianoTiles_Activity;
 import com.developer.vinay22ji.gamerscoin_arena.R;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
@@ -58,7 +59,7 @@ import java.util.List;
 public class Fragment_Home extends Fragment {
 
     String Uid;
-    TextView name_text;
+    TextView name_text,more_onlinegames;
     TickerView currentPoint;
     RecyclerView onlinegames_recyclerview;
     CardView Piano_Tiles_Card;
@@ -91,6 +92,7 @@ public class Fragment_Home extends Fragment {
         currentPoint.setCharacterLists(TickerUtils.provideNumberList());
         onlinegames_recyclerview = view.findViewById(R.id.onlinegames_recyclerview);
         Piano_Tiles_Card = view.findViewById(R.id.Piano_Tiles_Card);
+        more_onlinegames = view.findViewById(R.id.more_onlinegames);
         sliderView = (SliderView) view.findViewById(R.id.imageSlider);
 
 
@@ -100,6 +102,12 @@ public class Fragment_Home extends Fragment {
 
                 startActivity(new Intent(getActivity(), PianoTiles_Activity.class));
 
+            }
+        });
+        more_onlinegames.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), OnlineGames_Activity.class));
             }
         });
 
@@ -134,6 +142,7 @@ public class Fragment_Home extends Fragment {
 
         FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
         Query query = rootRef.collection("onlineGames")
+                .limit(4)
                 .orderBy("createdAt",Query.Direction.DESCENDING);
 
         query.addSnapshotListener(new EventListener<QuerySnapshot>() {
