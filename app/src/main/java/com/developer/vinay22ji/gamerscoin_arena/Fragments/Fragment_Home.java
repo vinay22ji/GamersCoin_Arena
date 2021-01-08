@@ -1,6 +1,7 @@
 package com.developer.vinay22ji.gamerscoin_arena.Fragments;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -22,9 +23,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.developer.vinay22ji.gamerscoin_arena.Activities.WebActivity;
+import com.developer.vinay22ji.gamerscoin_arena.Adaptor.ImageSliderAdaptor;
 import com.developer.vinay22ji.gamerscoin_arena.DarkModePrefManager;
 import com.developer.vinay22ji.gamerscoin_arena.MainActivity;
 import com.developer.vinay22ji.gamerscoin_arena.Models.GameModel;
+import com.developer.vinay22ji.gamerscoin_arena.Models.SliderModel;
 import com.developer.vinay22ji.gamerscoin_arena.PianoTiles_Activity;
 import com.developer.vinay22ji.gamerscoin_arena.R;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
@@ -32,6 +35,7 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.EventListener;
@@ -41,12 +45,15 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.robinhood.ticker.TickerUtils;
 import com.robinhood.ticker.TickerView;
+import com.smarteist.autoimageslider.SliderView;
 import com.squareup.picasso.Picasso;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Fragment_Home extends Fragment {
 
@@ -55,6 +62,7 @@ public class Fragment_Home extends Fragment {
     TickerView currentPoint;
     RecyclerView onlinegames_recyclerview;
     CardView Piano_Tiles_Card;
+    static SliderView sliderView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -83,6 +91,8 @@ public class Fragment_Home extends Fragment {
         currentPoint.setCharacterLists(TickerUtils.provideNumberList());
         onlinegames_recyclerview = view.findViewById(R.id.onlinegames_recyclerview);
         Piano_Tiles_Card = view.findViewById(R.id.Piano_Tiles_Card);
+        sliderView = (SliderView) view.findViewById(R.id.imageSlider);
+
 
         Piano_Tiles_Card.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,6 +103,7 @@ public class Fragment_Home extends Fragment {
             }
         });
 
+        getSliderdata();
         get_OnlineGames();
     }
 
@@ -181,6 +192,44 @@ public class Fragment_Home extends Fragment {
         };
 
         onlinegames_recyclerview.setAdapter(adapter);
+    }
+
+    List<SliderModel> gameModel=new ArrayList<>();
+
+    public void getSliderdata()
+    {
+
+        FirebaseDatabase.getInstance().getReference("SliderData")
+                .addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                if (dataSnapshot.exists())
+                {
+                    sliderView.setVisibility(View.VISIBLE);
+                    for(DataSnapshot ss:dataSnapshot.getChildren())
+                    {
+                        SliderModel m=ss.getValue(SliderModel.class);
+                        gameModel.add(m);
+
+                        System.out.println("---------- added ");
+                    }
+
+                }
+                else
+                {
+                    sliderView.setVisibility(View.GONE);
+                }
+                sliderView.setSliderAdapter(new ImageSliderAdaptor(getActivity(),gameModel));
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(getActivity(), databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
     @Override
