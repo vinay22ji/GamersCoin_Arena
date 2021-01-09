@@ -54,10 +54,10 @@
                 tools:ignore="RtlCompat">
 
                 <com.robinhood.ticker.TickerView
-                    android:id="@+id/userpointss2"
+                    android:id="@+id/userpointss_profile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="1100"
+                    android:text=""
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold"

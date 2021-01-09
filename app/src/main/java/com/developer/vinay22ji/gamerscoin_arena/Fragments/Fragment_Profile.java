@@ -51,7 +51,7 @@ public class Fragment_Profile extends Fragment {
     public void init(View view)
     {
         Edit_card= view.findViewById(R.id.Edit_card);
-        currentPoint = (TickerView) view.findViewById(R.id.userpointss2);
+        currentPoint = (TickerView) view.findViewById(R.id.userpointss_profile);
         currentPoint.setCharacterLists(TickerUtils.provideNumberList());
         logout_card = view.findViewById(R.id.logout_card);
         name_text_profile = view.findViewById(R.id.name_text_profile);
@@ -87,6 +87,9 @@ public class Fragment_Profile extends Fragment {
                         {
                             name_text_profile.setText("Hii Complete your profile");
                         }
+
+                        currentPoint.setText(snapshot.child("wallet").getValue().toString());
+
                     }
 
                     @Override

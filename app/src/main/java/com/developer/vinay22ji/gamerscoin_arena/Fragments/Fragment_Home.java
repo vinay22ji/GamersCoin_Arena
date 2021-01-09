@@ -223,6 +223,7 @@ public class Fragment_Home extends Fragment {
                         {
                             name_text.setText("Hello ");
                         }
+                        currentPoint.setText(snapshot.child("wallet").getValue().toString());
                     }
 
                     @Override
