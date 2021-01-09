@@ -1,9 +1,6 @@
 package com.developer.vinay22ji.gamerscoin_arena.Fragments;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,7 +10,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,18 +21,17 @@ import android.widget.Toast;
 import com.developer.vinay22ji.gamerscoin_arena.Activities.WebActivity;
 import com.developer.vinay22ji.gamerscoin_arena.Adaptor.ImageSliderAdaptor;
 import com.developer.vinay22ji.gamerscoin_arena.DarkModePrefManager;
-import com.developer.vinay22ji.gamerscoin_arena.MainActivity;
+import com.developer.vinay22ji.gamerscoin_arena.Activities.MainActivity;
 import com.developer.vinay22ji.gamerscoin_arena.Models.GameModel;
 import com.developer.vinay22ji.gamerscoin_arena.Models.SliderModel;
-import com.developer.vinay22ji.gamerscoin_arena.OnlineGames_Activity;
-import com.developer.vinay22ji.gamerscoin_arena.PianoTiles_Activity;
+import com.developer.vinay22ji.gamerscoin_arena.Activities.OnlineGames_Activity;
+import com.developer.vinay22ji.gamerscoin_arena.GamesActivity.PianoTiles_Activity;
 import com.developer.vinay22ji.gamerscoin_arena.R;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.EventListener;
@@ -49,12 +44,10 @@ import com.robinhood.ticker.TickerView;
 import com.smarteist.autoimageslider.SliderView;
 import com.squareup.picasso.Picasso;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Fragment_Home extends Fragment {
 
@@ -64,6 +57,8 @@ public class Fragment_Home extends Fragment {
     RecyclerView onlinegames_recyclerview;
     CardView Piano_Tiles_Card;
     static SliderView sliderView;
+    List<SliderModel> gameModel=new ArrayList<>();
+    CircleImageView profileCircleImageView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -72,6 +67,7 @@ public class Fragment_Home extends Fragment {
         View  view= inflater.inflate(R.layout.fragment__home, container, false);
 
         init(view);
+        getuserData();
         getdatafrom_Firebase();
 
         return view;
@@ -87,12 +83,13 @@ public class Fragment_Home extends Fragment {
 
 
         Uid= FirebaseAuth.getInstance().getCurrentUser().getUid();
-        name_text=view.findViewById(R.id.name_text);
+        name_text=view.findViewById(R.id.home_name_text);
         currentPoint = (TickerView) view.findViewById(R.id.userpointss);
         currentPoint.setCharacterLists(TickerUtils.provideNumberList());
         onlinegames_recyclerview = view.findViewById(R.id.onlinegames_recyclerview);
         Piano_Tiles_Card = view.findViewById(R.id.Piano_Tiles_Card);
         more_onlinegames = view.findViewById(R.id.more_onlinegames);
+        profileCircleImageView = view.findViewById(R.id.profileCircleImageView);
         sliderView = (SliderView) view.findViewById(R.id.imageSlider);
 
 
@@ -110,6 +107,13 @@ public class Fragment_Home extends Fragment {
                 startActivity(new Intent(getActivity(), OnlineGames_Activity.class));
             }
         });
+        profileCircleImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity.setCurrentTab(3);
+            }
+        });
+
 
         getSliderdata();
         get_OnlineGames();
@@ -203,7 +207,34 @@ public class Fragment_Home extends Fragment {
         onlinegames_recyclerview.setAdapter(adapter);
     }
 
-    List<SliderModel> gameModel=new ArrayList<>();
+    private void getuserData()
+    {
+        FirebaseDatabase.getInstance().getReference("users")
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                        if (!snapshot.child("name").getValue().toString().equals(""))
+                        {
+                            name_text.setText("Hello "+snapshot.child("name").getValue().toString()+" !");
+                        }
+                        else
+                        {
+                            name_text.setText("Hello ");
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+    }
+
+
+
+
 
     public void getSliderdata()
     {

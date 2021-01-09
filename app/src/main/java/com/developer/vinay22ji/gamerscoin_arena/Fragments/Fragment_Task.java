@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.developer.vinay22ji.gamerscoin_arena.DarkModePrefManager;
-import com.developer.vinay22ji.gamerscoin_arena.MainActivity;
+import com.developer.vinay22ji.gamerscoin_arena.Activities.MainActivity;
 import com.developer.vinay22ji.gamerscoin_arena.R;
 
 

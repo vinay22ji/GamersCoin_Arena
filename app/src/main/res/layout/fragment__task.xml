@@ -93,6 +93,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/textcolour"
                     android:text="Play Games"
+                    android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     android:gravity="center"/>
 
@@ -125,6 +126,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/textcolour"
                     android:text="Lucky Draw"
+                    android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     android:gravity="center"/>
 
@@ -166,6 +168,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/textcolour"
                     android:text="Watch Videos"
+                    android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     android:gravity="center"/>
 
@@ -198,6 +201,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/textcolour"
                     android:text="Surveys Offers"
+                    android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     android:gravity="center"/>
 
@@ -205,6 +209,49 @@
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:weightSum="2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <androidx.cardview.widget.CardView
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardUseCompatPadding="true"
+            android:layout_margin=".5dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="3dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:src="@drawable/quiz_icon"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/textcolour"
+                    android:text="Play Quiz"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"/>
+
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
 
 
     </LinearLayout>
