@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.developer.vinay22ji.gamerscoin_arena.Activities.EditProfile_Activity;
 import com.developer.vinay22ji.gamerscoin_arena.Activities.Login_Activity;
+import com.developer.vinay22ji.gamerscoin_arena.Activities.Prizes_Activity;
 import com.developer.vinay22ji.gamerscoin_arena.DarkModePrefManager;
 import com.developer.vinay22ji.gamerscoin_arena.Activities.MainActivity;
 import com.developer.vinay22ji.gamerscoin_arena.R;
@@ -27,7 +28,7 @@ import com.robinhood.ticker.TickerView;
 
 public class Fragment_Profile extends Fragment {
 
-    CardView Edit_card,logout_card;
+    CardView Edit_card,logout_card,prize_card;
     TickerView currentPoint;
     TextView name_text_profile;
 
@@ -55,6 +56,7 @@ public class Fragment_Profile extends Fragment {
         currentPoint.setCharacterLists(TickerUtils.provideNumberList());
         logout_card = view.findViewById(R.id.logout_card);
         name_text_profile = view.findViewById(R.id.name_text_profile);
+        prize_card = view.findViewById(R.id.prize_card);
 
         Edit_card.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,6 +71,13 @@ public class Fragment_Profile extends Fragment {
                 startActivity(new Intent(getActivity(), Login_Activity.class));
             }
         });
+        prize_card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), Prizes_Activity.class));
+            }
+        });
+
     }
 
     private void getuserData()
