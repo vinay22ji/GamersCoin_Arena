@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context="Activities.test_activity">
+
+<androidx.core.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <SeekBar
+                android:id="@+id/seekbar"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:maxHeight="30dp"
+                android:clickable="false"
+                android:progress="70"
+                android:progressDrawable="@drawable/custonseekbar"
+                android:splitTrack="false"
+                android:thumb="@drawable/seekbarthumb"/>
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/textcolour"
+                android:text="Total time:- "/>
+
+            <Chronometer
+                android:id="@+id/chronometer"
+                android:visibility="visible"
+                android:layout_marginLeft="92dp"
+                android:textColor="@color/textcolour"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:gravity="center"
+                android:text="30"
+                android:textColor="@color/textcolour"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="350dp"
+                android:layout_marginTop="22dp"
+                android:layout_marginEnd="37dp"
+                android:layout_marginRight="37dp"
+                android:foregroundGravity="right"
+                android:src="@drawable/ic_baseline_watch_later_24" />
+
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/questionnotext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Question 1/10"
+            android:textSize="30dp"
+            android:textColor="@color/textcolour"
+            android:textStyle="bold"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="30dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/textcolour"
+            android:gravity="center"
+            android:text="................................................................................................."
+            />
+
+        <TextView
+            android:id="@+id/questiontext"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:text="What attraction in Montreal is one of the largest in thw World?"
+            android:textColor="@color/textcolour"
+            android:textStyle="bold"
+            android:textSize="30dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"/>
+
+        <RadioGroup
+            android:id="@+id/radiogroup2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp">
+
+            <RadioButton
+                android:id="@+id/radiooption11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="The Botanical Gardens"
+                android:textColor="@color/textcolour"
+                android:textSize="20dp"
+                android:padding="15dp"/>
+
+            <RadioButton
+                android:id="@+id/radiooption21"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="The Science Museum"
+                android:textColor="@color/textcolour"
+                android:textSize="20dp"
+                android:layout_marginTop="10dp"
+                android:padding="15dp"/>
+
+            <RadioButton
+                android:id="@+id/radiooption31"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="The Olympic Stadium"
+                android:textColor="@color/textcolour"
+                android:layout_marginTop="10dp"
+                android:textSize="20dp"
+                android:padding="15dp"/>
+
+            <RadioButton
+                android:id="@+id/radiooption41"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/textcolour"
+                android:text="The Olympic Stadium"
+                android:layout_marginTop="10dp"
+                android:textSize="20dp"
+                android:padding="15dp"/>
+
+        </RadioGroup>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/whitelayout">
+
+            <Button
+                android:id="@+id/nextbtn"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:text="Next"
+                android:textColor="@color/white"
+                android:layout_gravity="center"
+                android:background="@drawable/whitelayout"/>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/banneradViewtest"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:background="@android:color/transparent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            tools:ignore="MissingConstraints">
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>
+
+    <LinearLayout
+        android:id="@+id/scorelayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:background="@color/colorPrimary">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="320dp"
+                    android:layout_marginTop="60dp"
+                    android:gravity="center">
+
+                    <LinearLayout
+                        android:layout_width="300dp"
+                        android:layout_height="300dp"
+                        android:padding="10dp"
+                        android:orientation="vertical"
+                        android:layout_gravity="center">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:textColor="@color/colorAccent"
+                            android:layout_marginTop="20dp"
+                            android:textStyle="bold"
+                            android:textSize="30dp"
+                            android:text="Your Marks"/>
+
+                        <TextView
+                            android:id="@+id/markstext"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            android:layout_marginTop="30dp"
+                            android:textColor="@color/textcolour"
+                            android:text="20"
+                            android:textSize="40dp"/>
+
+                        <TextView
+                            android:id="@+id/totalmarkstext"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            android:layout_marginTop="30dp"
+                            android:textColor="@color/textcolour"
+                            android:text="out of 20"
+                            android:textSize="20dp"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_margin="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/bluelayout">
+
+                    <ImageView
+                        android:layout_width="34dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="15dp"
+                        android:src="@drawable/ic_baseline_watch_later_24"
+                        />
+
+                    <TextView
+                        android:id="@+id/totaltimetext"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:layout_marginLeft="10dp"
+                        android:textColor="@color/textcolour"
+                        android:textSize="15dp"
+                        android:text="Total Time Taken  1 min 20 sec "/>
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/banneradViewtest2"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:background="@android:color/transparent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    tools:ignore="MissingConstraints">
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp">
+
+                    <ImageView
+                        android:id="@+id/goback"
+                        android:layout_width="110dp"
+                        android:layout_height="70dp"
+                        android:padding="15dp"
+                        android:layout_marginLeft="20dp"
+                        android:background="@drawable/whitelayout2"
+                        android:src="@drawable/ic_back"
+                        android:gravity="center"/>
+
+
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
