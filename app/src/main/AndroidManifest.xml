@@ -9,8 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GamersCoin_Arena">
-        <activity android:name=".Activities.Quiz_Activity"/>
-        <activity android:name=".Activities.test_activity"/>
+        <activity android:name=".Activities.View_Test_Activity"/>
+        <activity android:name=".Activities.Quiz_Activity" />
+        <activity android:name=".Activities.test_activity" />
         <activity android:name=".Activities.BuyPrize_Activity" />
         <activity android:name=".Activities.Prizes_Activity" />
         <activity android:name=".Activities.EditProfile_Activity" />

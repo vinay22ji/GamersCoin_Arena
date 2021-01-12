@@ -89,7 +89,7 @@ public class test_activity extends AppCompatActivity {
         startTime= System.currentTimeMillis();
         running = true;
 
-
+        dr = FirebaseDatabase.getInstance().getReference("groups").child("Maths").child("poll");
         nextbtn=findViewById(R.id.nextbtn);
         questiontext=findViewById(R.id.questiontext);
         radiooption1=findViewById(R.id.radiooption11);
