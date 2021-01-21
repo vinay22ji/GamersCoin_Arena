@@ -30,8 +30,9 @@ public class Recycler_Adapter_test extends RecyclerView.Adapter<Recycler_Adapter
 
     List<String> pollid;
 
-    public Recycler_Adapter_test(@NonNull Context context) {
+    public Recycler_Adapter_test(@NonNull Context context,String groupname) {
         this.context = context;
+        this.groupname = groupname;
     }
 
     public void addmodam(testmodam m) {
@@ -61,7 +62,7 @@ public class Recycler_Adapter_test extends RecyclerView.Adapter<Recycler_Adapter
 
                 System.out.println("=================== position "+position);
                 Modam.setPosition(position);
-                test_activity test_activity=new test_activity(Modam_list,position);
+                test_activity test_activity=new test_activity(Modam_list,position,groupname);
                 context.startActivity(new Intent(context,test_activity.class));
 
             }

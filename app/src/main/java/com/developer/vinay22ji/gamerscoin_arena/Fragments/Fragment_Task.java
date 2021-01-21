@@ -14,12 +14,14 @@ import com.developer.vinay22ji.gamerscoin_arena.Activities.View_Test_Activity;
 import com.developer.vinay22ji.gamerscoin_arena.DarkModePrefManager;
 import com.developer.vinay22ji.gamerscoin_arena.Activities.MainActivity;
 import com.developer.vinay22ji.gamerscoin_arena.R;
+import com.robinhood.ticker.TickerUtils;
+import com.robinhood.ticker.TickerView;
 
 
 public class Fragment_Task extends Fragment {
 
     CardView Quiz_card;
-
+    TickerView currentPoint;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -39,6 +41,8 @@ public class Fragment_Task extends Fragment {
 
     private void init(View view)
     {
+        currentPoint = (TickerView) view.findViewById(R.id.Task_userpointss);
+        currentPoint.setCharacterLists(TickerUtils.provideNumberList());
         Quiz_card=view.findViewById(R.id.Quiz_card);
 
 

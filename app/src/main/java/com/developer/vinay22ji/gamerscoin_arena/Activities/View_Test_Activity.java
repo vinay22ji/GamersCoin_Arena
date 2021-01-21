@@ -57,7 +57,7 @@ public class View_Test_Activity extends AppCompatActivity {
         dr2.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Recycler_Adapter_test mr=new Recycler_Adapter_test(View_Test_Activity.this);
+                Recycler_Adapter_test mr=new Recycler_Adapter_test(View_Test_Activity.this,GroupName);
                 mr.Modam_list.clear();
                 for(DataSnapshot ss:dataSnapshot.getChildren()) {
                     testmodam m = ss.getValue(testmodam.class);

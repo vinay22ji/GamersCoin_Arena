@@ -90,8 +90,14 @@ public class Login_Activity extends AppCompatActivity {
                 String otptex=Otp_Edittext.getText().toString();
                 if(!otptex.isEmpty())
                 {
-                    PhoneAuthCredential phoneAuthCredential=PhoneAuthProvider.getCredential(token,otptex);
-                    matchotp(phoneAuthCredential);
+                    try {
+                        PhoneAuthCredential phoneAuthCredential=PhoneAuthProvider.getCredential(token,otptex);
+                        matchotp(phoneAuthCredential);
+                    }
+                    catch (Exception e)
+                    {
+                        Toast.makeText(Login_Activity.this, "Login Failed", Toast.LENGTH_SHORT).show();
+                    }
                 }
                 else
                 {

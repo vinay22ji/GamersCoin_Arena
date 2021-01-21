@@ -23,14 +23,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.developer.vinay22ji.gamerscoin_arena.Models.Modam;
 import com.developer.vinay22ji.gamerscoin_arena.Models.testmodam;
 import com.developer.vinay22ji.gamerscoin_arena.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.FieldValue;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -62,14 +69,16 @@ public class test_activity extends AppCompatActivity {
     DatabaseReference dr,dr2;
 
     Long todattasks;
-
+    String Testtype;
     public test_activity()
     {
 
     }
 
-    public test_activity(List<testmodam> Modam_list, int selectedtest) {
+    public test_activity(List<testmodam> Modam_list, int selectedtest,String testtype) {
         this.Modam_list = Modam_list;
+        this.Testtype = testtype;
+        this.selectedtest = selectedtest;
 
     }
 
@@ -1233,56 +1242,50 @@ public class test_activity extends AppCompatActivity {
     public void checker()
     {
 
-        if(dr==null)
-        {
-            synkdata();
-        }
-        else
-        {
-            dr.child("result").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                    try {
-                        String marks=snapshot.child("marks").getValue().toString();
-                        String time=snapshot.child("time").getValue().toString();
-                        String totalmarks=snapshot.child("totalmarks").getValue().toString();
 
-                        countDownTimer.cancel();
+            //checker
 
-                        View adContainer = findViewById(R.id.banneradViewtest2);
-                        
-                        scorelayout.setVisibility(View.VISIBLE);
-                        markstext.setText(String.valueOf(marks));
-                        totalmarkstext.setText("out of "+ String.valueOf(totalmarks));
-                        totaltime=MyChronometer.getText().toString();
-                        totaltimetext.setText("Total Time Taken "+ String.valueOf(time));
-                    }
-                    catch (Exception f)
-                    {
-                        View adContainer = findViewById(R.id.banneradViewtest);
-                        f.printStackTrace();
-                    }
+//            dr.child("result").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(@NonNull DataSnapshot snapshot) {
+//
+//                    try {
+//                        String marks=snapshot.child("marks").getValue().toString();
+//                        String time=snapshot.child("time").getValue().toString();
+//                        String totalmarks=snapshot.child("totalmarks").getValue().toString();
+//
+//                        countDownTimer.cancel();
+//                        scorelayout.setVisibility(View.VISIBLE);
+//                        markstext.setText(String.valueOf(marks));
+//                        totalmarkstext.setText("out of "+ String.valueOf(totalmarks));
+//                        totaltime=MyChronometer.getText().toString();
+//                        totaltimetext.setText("Total Time Taken "+ String.valueOf(time));
+//                    }
+//                    catch (Exception f)
+//                    {
+//                        f.printStackTrace();
+//                    }
+//
+//                }
+//
+//                @Override
+//                public void onCancelled(@NonNull DatabaseError error) {
+//
+//                }
+//            });
 
-                }
 
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-
-                }
-            });
-
-        }
     }
 
 //    RewardedAd rewardedAd;
 
     public void submittest()
     {
-        dr.child("result").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("uid").setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
-        dr.child("result").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("marks").setValue(points);
-        dr.child("result").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("time").setValue(totaltime);
-        dr.child("result").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("totalmarks").setValue(totalmarks);
+//        dr.child("result").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("uid").setValue(FirebaseAuth.getInstance().getCurrentUser().getUid());
+//        dr.child("result").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("marks").setValue(points);
+//        dr.child("result").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("time").setValue(totaltime);
+//        dr.child("result").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("totalmarks").setValue(totalmarks);
 
 //        String a= String.valueOf(fragment_Home.Done);
 //        int i= Integer.parseInt(a);
@@ -1290,6 +1293,28 @@ public class test_activity extends AppCompatActivity {
 //        fragment_Home.donetodaytasks();
 //        fragment_Home.dr7.child("members").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child("todaytasks").setValue(i);
 
+        HashMap<String,Object> result=new HashMap<>();
+        result.put("time",totaltime);
+        result.put("marks",points);
+        result.put("totalmarks",totalmarks);
+        result.put("testtype",Testtype);
+        result.put("testid",testid);
+        result.put("TimeStamp", FieldValue.serverTimestamp());
+
+        FirebaseFirestore.getInstance().collection("Quiz")
+                .document().set(result).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+
+
+
+            }
+                  }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+
+                    }
+                });
 
     }
 
