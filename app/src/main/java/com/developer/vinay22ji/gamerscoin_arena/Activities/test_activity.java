@@ -101,6 +101,7 @@ public class test_activity extends AppCompatActivity {
         dr = FirebaseDatabase.getInstance().getReference("groups").child("Maths").child("poll");
         nextbtn=findViewById(R.id.nextbtn);
         questiontext=findViewById(R.id.questiontext);
+        radioGroup=findViewById(R.id.radiogroup2);
         radiooption1=findViewById(R.id.radiooption11);
         radiooption2=findViewById(R.id.radiooption21);
         radiooption3=findViewById(R.id.radiooption31);
@@ -145,6 +146,7 @@ public class test_activity extends AppCompatActivity {
         if(position==1)
         {
             questiontext.setText(Modam_list.get(selectedtest).getQuestion1());
+
             radiooption1.setText(Modam_list.get(selectedtest).getQuestion1option1());
             radiooption2.setText(Modam_list.get(selectedtest).getQuestion1option2());
             radiooption3.setText(Modam_list.get(selectedtest).getQuestion1option3());
@@ -1125,6 +1127,10 @@ public class test_activity extends AppCompatActivity {
         radiooption2.setClickable(true);
         radiooption3.setClickable(true);
         radiooption4.setClickable(true);
+
+        radioGroup2.clearCheck();
+
+
     }
 
     public int miniconverter(String min)
