@@ -35,7 +35,7 @@
             android:layout_weight="6"
             android:fontFamily="@font/lato_black"
             android:gravity="center|left"
-            android:text="Shivam Achint (Quiz App)"
+            android:text="Quiz App"
             android:textColor="@color/white"
             android:textSize="22dp" />
 
